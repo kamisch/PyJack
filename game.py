@@ -60,6 +60,7 @@ def runHand(dealer, gambler):
 
     if gambler.getSum(False) == 21:
         print('Gambler has blackjack! Gambler wins')
+        return 1
 
     if dealer.cards[1].val >= 10 and dealer.getSum(False) == 21:
         printPlayerInfo(dealer, False)
