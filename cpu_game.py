@@ -10,13 +10,13 @@ numDecks = 1
 
 dealer = player('Dealer')
 gambler = player('Player')
-gamesWon = 0
+gamesScore = 0
 gamesPushed = 0
 totalGames = 0
 d1 = deck(numDecks)
 
 def main():
-    global gamesWon, gamesPushed, totalGames
+    global gamesScore, gamesPushed, totalGames
     gameDone = False
     datasetSize = 1000000
     count = 0 
@@ -33,7 +33,7 @@ def main():
         for y in gambler.cards:
             playerInfo.append(y.rank)
         if gameResult == 1:
-            gamesWon += 1
+            gamesScore += 1
             #print('The gambler won the hand!')
             playerInfo.append(1)
             dealerInfo.append(-1)
@@ -43,6 +43,7 @@ def main():
             playerInfo.append(0)
             dealerInfo.append(0)
         else: 
+            gamesScore -= 1
             #print('The gambler lost the hand. Bummer :(')
             playerInfo.append(-1)
             dealerInfo.append(1)
@@ -50,6 +51,7 @@ def main():
             csvWriter = csv.writer(csvFile,delimiter=',',quotechar='"',quoting=csv.QUOTE_MINIMAL)
             csvWriter.writerow(playerInfo)
             csvWriter.writerow(dealerInfo)
+            csvWriter.writerow([gamesScore])
 
         playerInput = "y"
 
