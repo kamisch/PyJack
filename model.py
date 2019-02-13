@@ -56,7 +56,7 @@ class deck:
         return cards
 
     def shuffleDeck(self):
-        print('Shuffling cards...')
+        #print('Shuffling cards...')
         self.cards = self.getNewDeck()
         self.cardsDrawn = 0
         self.cardsLeft = len(self.cards)
